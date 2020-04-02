@@ -28,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewOutlineProvider;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
  ConstraintLayout constraintLayout;
     ArrayList<Message> oldList;
+    ImageView imageView;
     ArrayList<Message> newList;
     RecyclerView recyclerView;
     ListView listView;
@@ -48,20 +50,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         constraintLayout = findViewById(R.id.con);
-        listView=findViewById(R.id.list);
+   //     listView=findViewById(R.id.list);
         recyclerView=findViewById(R.id.rec);
-        Adapter adapter=new Adapter(MainActivity.this,new Data().getList());
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainActivity.this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapter);
-listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(MainActivity.this, index, Toast.LENGTH_SHORT).show();
-        index++;
-    }
-});
+        imageView=findViewById(R.id.imageView);
+     imageView.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Toast.makeText(MainActivity.this,String.valueOf(index), Toast.LENGTH_SHORT).show();
+             index++;
+             Adapter adapter=new Adapter(MainActivity.this,new Data().getList());
+             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainActivity.this);
+             linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+             recyclerView.setLayoutManager(linearLayoutManager);
+             recyclerView.setAdapter(adapter);
+
+
+
+         }
+     });
+
+
 //
 //        recyclerView.setOnClickListener(new View.OnClickListener() {
 //            @Override
