@@ -10,17 +10,19 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.osos.blushed.Model.Message;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
-RecyclerView recyclerView;
+
     ArrayList<Message> list;
     Context c;
 
@@ -30,6 +32,15 @@ RecyclerView recyclerView;
     Adapter(Context c, ArrayList<Message> obj){
         this.c=c;
         list=obj;
+
+    }
+    public void insert(ArrayList<Message> oldList,ArrayList<Message> newlist){
+     list=oldList;
+        diffUtils nilesh=new diffUtils(list,newlist);
+        DiffUtil.DiffResult diffResult=DiffUtil.calculateDiff(nilesh,true);
+        list.clear();
+        list.addAll(newlist);
+        diffResult.dispatchUpdatesTo(this);
 
     }
 

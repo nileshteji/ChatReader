@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
  ListView list;
  RecyclerView recyclerView;
  ArrayList<Message> newList;
+ ArrayList<Message> getNewList1;
+
 
 
 
@@ -63,25 +65,32 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.setLayoutManager(linearLayoutManager);
                 recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
                 recyclerView.setAdapter(boj);
+               boj.notifyItemInserted(index);
+                recyclerView.smoothScrollToPosition(boj.getItemCount()-1);
                 index++;
-            } else {
-                Toast.makeText(this, "Sorry Time will be exceeded", Toast.LENGTH_SHORT).show();
+            }
+            else {
+              getSupportFragmentManager().beginTransaction().replace(R.id.con,new BlankFragment()).commit();
+                //  Toast.makeText(this, "Sorry No internet Connection", Toast.LENGTH_SHORT).show();
             }
         }
         else{
-            Toast.makeText(this, "Sorry", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sorry no more chats ", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         list=findViewById(R.id.list_item);
         constraintLayout=findViewById(R.id.con);
         recyclerView=findViewById(R.id.rec);
         newList=new ArrayList<>();
+        getNewList1=new ArrayList<>();
+
 
        // list.setAdapter(new listView(newList,MainActivity.this));
         constraintLayout.setOnClickListener(new View.OnClickListener() {

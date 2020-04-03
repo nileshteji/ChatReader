@@ -1,5 +1,6 @@
 package com.osos.blushed;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 
 import com.osos.blushed.Model.Message;
@@ -10,7 +11,13 @@ public class diffUtils extends DiffUtil.Callback {
     ArrayList<Message> oldList;
     ArrayList<Message> newList;
 
-    diffUtils(ArrayList<Message> oldList ,ArrayList<Message> newList)
+    @Nullable
+    @Override
+    public Object getChangePayload(int oldItemPosition, int newItemPosition) {
+        return super.getChangePayload(oldItemPosition, newItemPosition);
+    }
+
+    diffUtils(ArrayList<Message> oldList , ArrayList<Message> newList)
     {
         this.oldList=oldList;
         this.newList=newList;
@@ -29,11 +36,11 @@ public class diffUtils extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return false;
+        return oldList.get(oldItemPosition).equals(newList.get(newItemPosition));
     }
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-        return false;
+        return oldList.get(oldItemPosition).equals(newList.get(newItemPosition));
     }
 }

@@ -6,8 +6,17 @@ String person;
 String data;
 
 
-    public Message(String person, String data) {
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
+
+    public Message( String person, String data) {
         this.person = person;
+       // this.id=id;
         this.data = data;
     }
 
