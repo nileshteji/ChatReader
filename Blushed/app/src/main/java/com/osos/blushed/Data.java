@@ -6,7 +6,43 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Data {
-ArrayList<Message> data=new ArrayList<>(Arrays.asList(new Message("Me","Hi"),new Message("They","Hi Bitch")));
+ArrayList<Message> data=new ArrayList<>(Arrays.asList(new Message("Me","Hi"),
+        new Message("They","Hi Bitch"),
+        new Message("Me","Please na then stop Watching the movies"),
+        new Message("They","What about the rest"),
+        new Message("Me","Hi"),
+        new Message("Me","Hi"),
+        new Message("They","Hi Bitch"),
+        new Message("Me","Please na then stop Watching the movies"),
+        new Message("They","What about the rest"),
+        new Message("Me","Hi"),
+        new Message("Me","Hi"),
+        new Message("They","Hi Bitch"),
+        new Message("Me","Please na then stop Watching the movies"),
+        new Message("They","What about the rest"),
+        new Message("Me","Hi"),
+        new Message("Me","Hi"),
+        new Message("They","Hi Bitch"),
+        new Message("Me","Please na then stop Watching the movies"),
+        new Message("They","What about the rest"),
+        new Message("Me","Hi"),
+        new Message("They","Hi Bitch"),
+        new Message("Me","Please na then stop Watching the movies"),
+        new Message("They","What about the rest"),
+        new Message("Me","Hi"),
+        new Message("Me","Hi"),
+        new Message("They","Hi Bitch"),
+        new Message("Me","Please na then stop Watching the movies"),
+        new Message("They","What about the rest"),
+        new Message("Me","Hi"),new Message("Me","Hi"),
+        new Message("They","Hi Bitch"),
+        new Message("Me","Please na then stop Watching the movies"),
+        new Message("They","What about the rest"),
+        new Message("Me","Hi"),
+        new Message("Me","Hi"),
+        new Message("They","Hi Bitch"),
+        new Message("Me","Please na then stop Watching the movies"),
+        new Message("They","What about the rest")));
 
 
 

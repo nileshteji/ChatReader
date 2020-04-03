@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.osos.blushed.Model.Message;
@@ -18,9 +20,10 @@ import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
-
+RecyclerView recyclerView;
     ArrayList<Message> list;
     Context c;
+
 
 
 
@@ -40,12 +43,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        holder.con.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(c, "Hi", Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         if(list.get(position).getPerson().equals("Me")){
             holder.center.setVisibility(View.INVISIBLE);
@@ -84,8 +82,16 @@ ConstraintLayout con;
             center=itemView.findViewById(R.id.textView);
             me=itemView.findViewById(R.id.textView2);
             there=itemView.findViewById(R.id.textView3);
-        con=itemView.findViewById(R.id.con);
+            con=itemView.findViewById(R.id.con1);
 
+            con.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {if(c instanceof MainActivity){
+                  ((MainActivity) c).updateUi();
+                }
+
+                }
+            });
 
 
 

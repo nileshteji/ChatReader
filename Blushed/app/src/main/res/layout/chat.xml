@@ -2,16 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/con1"
     android:layout_width="match_parent"
-    android:layout_marginTop="15dp"
-   android:id="@+id/con"
     android:layout_height="wrap_content"
-    >
+    android:layout_marginTop="10dp">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="91dp"
-        android:layout_height="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="TextView"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,12 +22,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="140dp"
-        android:layout_height="51dp"
+        android:layout_width="208dp"
+        android:layout_height="50dp"
         android:background="@drawable/sender"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.992"
@@ -38,12 +37,12 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="147dp"
-        android:layout_height="49dp"
+        android:layout_width="208dp"
+        android:layout_height="50dp"
         android:background="@drawable/there"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
