@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
  ConstraintLayout constraintLayout;
  ListView list;
  RecyclerView recyclerView;
+    Adapter boj;
  ArrayList<Message> newList;
  ArrayList<Message> getNewList1;
 
@@ -58,16 +59,13 @@ public class MainActivity extends AppCompatActivity {
     public void updateUi(){
         if(index<=new Data().getSize()-1) {
             if (isConnected() == true) {
-                newList.add(new Data().getData(index));
-                Adapter boj = new Adapter(this, newList);
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
-                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(linearLayoutManager);
-                recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
-                recyclerView.setAdapter(boj);
-               boj.notifyItemInserted(index);
-                recyclerView.smoothScrollToPosition(boj.getItemCount()-1);
+               newList.add(new Data().getData(index));
                 index++;
+               boj=new Adapter(MainActivity.this,newList);
+               recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
+               recyclerView.setAdapter(boj);
+               recyclerView.smoothScrollToPosition(boj.getItemCount()-1);
+
             }
             else {
               getSupportFragmentManager().beginTransaction().replace(R.id.con,new BlankFragment()).commit();
@@ -100,21 +98,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-newList.add(new Data().getData(index));
-index++;
-       Adapter boj=new Adapter(this,newList);
-       LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainActivity.this);
-       linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-       recyclerView.setLayoutManager(linearLayoutManager);
-       recyclerView.getRecycledViewPool().setMaxRecycledViews(0,0);
-       recyclerView.setAdapter(boj);
+
+        if(isConnected()==true){
+            newList.add(new Data().getData(index));
+            index++;
+          boj=new Adapter(this,newList);
+            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainActivity.this);
+            linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerView.getRecycledViewPool().setMaxRecycledViews(0,0);
+            recyclerView.setAdapter(boj);
+
+
+        }
+        else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.con,new BlankFragment()).commit();
+        }
+
 
 
 
 
     }
-
-
 
 
 

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 /**
@@ -41,6 +42,9 @@ public class BlankFragment extends Fragment {
                 getView().setVisibility(View.GONE);
 
 
+            }
+            else{
+                Toast.makeText(getActivity(), "No Internet", Toast.LENGTH_SHORT).show();
             }
          }
      });
