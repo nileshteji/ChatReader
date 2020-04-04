@@ -41,7 +41,7 @@ import android.widget.Toast;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
  ConstraintLayout constraintLayout;
  ListView list;
  RecyclerView recyclerView;
@@ -59,12 +59,18 @@ public class MainActivity extends AppCompatActivity {
     public void updateUi(){
         if(index<=new Data().getSize()-1) {
             if (isConnected() == true) {
-               newList.add(new Data().getData(index));
-                index++;
-               boj=new Adapter(MainActivity.this,newList);
-               recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
-               recyclerView.setAdapter(boj);
-               recyclerView.smoothScrollToPosition(boj.getItemCount()-1);
+                newList.add(new Data().getData(index));
+              //  Toast.makeText(this, newList.get(index).getData()+" "+newList.get(index).getPerson(), Toast.LENGTH_SHORT).show();
+//               if(boj==null){
+//                   Log.d("TAG","Null Adapter");
+//               }
+//               else{
+                 //  boj=new Adapter(this,newList);
+                   Log.d("TAG1","notifyItem");
+                   boj.notifyItemInserted(newList.size()-1);
+                   recyclerView.smoothScrollToPosition(index);
+                   index++;
+
 
             }
             else {
@@ -107,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(linearLayoutManager);
             recyclerView.getRecycledViewPool().setMaxRecycledViews(0,0);
+
             recyclerView.setAdapter(boj);
 
 
@@ -145,8 +152,6 @@ public boolean isConnected() {
         return connected;
 
 }
-
-
 
 
 }

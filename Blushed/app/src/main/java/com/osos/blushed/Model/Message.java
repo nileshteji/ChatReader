@@ -4,6 +4,7 @@ public class Message {
 
 String person;
 String data;
+int image;
 
 
 //    public String getId() {
@@ -14,8 +15,18 @@ String data;
 //        this.id = id;
 //    }
 
-    public Message( String person, String data) {
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public Message(String person, String data, int image) {
         this.person = person;
+        this.image=image;
+
        // this.id=id;
         this.data = data;
     }

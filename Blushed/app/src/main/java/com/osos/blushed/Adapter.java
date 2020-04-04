@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,15 +35,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
         list=obj;
 
     }
-    public void insert(ArrayList<Message> oldList,ArrayList<Message> newlist){
-     list=oldList;
-        diffUtils nilesh=new diffUtils(list,newlist);
-        DiffUtil.DiffResult diffResult=DiffUtil.calculateDiff(nilesh,true);
-        list.clear();
-        list.addAll(newlist);
-        diffResult.dispatchUpdatesTo(this);
 
-    }
 
 
     @NonNull
@@ -55,21 +48,33 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
 
+          if(list.get(position).getImage()==1){
+            holder.imageView.setVisibility(View.VISIBLE);
+              holder.there.setVisibility(View.INVISIBLE);
+              holder.me.setVisibility(View.INVISIBLE);
+              holder.center.setVisibility(View.INVISIBLE);
 
-        if(list.get(position).getPerson().equals("Me")){
+
+        }
+
+
+       else if(list.get(position).getPerson().equals("Me") && list.get(position).getImage()==0){
             holder.center.setVisibility(View.INVISIBLE);
+            holder.imageView.setVisibility(View.INVISIBLE);
             holder.there.setVisibility(View.INVISIBLE);
             holder.me.setText(list.get(position).getData());
 
         }
-        else if(list.get(position).getPerson().equals("They")){
+        else if(list.get(position).getPerson().equals("They") && list.get(position).getImage()==0){
             holder.center.setVisibility(View.INVISIBLE);
             holder.me.setVisibility(View.INVISIBLE);
+            holder.imageView.setVisibility(View.INVISIBLE);
             holder.there.setText(list.get(position).getData());
 
         }
         else{
             holder.me.setVisibility(View.INVISIBLE);
+            holder.imageView.setVisibility(View.INVISIBLE);
             holder.there.setVisibility(View.INVISIBLE);
             holder.center.setText(list.get(position).getData());
         }
@@ -87,11 +92,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
 TextView center,there,me;
 ConstraintLayout con;
+ImageView imageView;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
             center=itemView.findViewById(R.id.textView);
             me=itemView.findViewById(R.id.textView2);
+            imageView=itemView.findViewById(R.id.imageView);
             there=itemView.findViewById(R.id.textView3);
             con=itemView.findViewById(R.id.con1);
 
